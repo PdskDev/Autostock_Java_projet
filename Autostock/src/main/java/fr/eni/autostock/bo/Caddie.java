@@ -1,29 +1,32 @@
 package fr.eni.autostock.bo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Caddie {
 	
 	private long id;
 	private Date date;
 	private long user_id;
-	
+	private List<CaddieItem> lisItems;
 	
 	public Caddie() {
 		super();
 	}
 
-	public Caddie(Date date, long user_id) {
+	public Caddie(Date date, long user_id, List<CaddieItem> lisItems) {
 		super();
 		this.date = date;
 		this.user_id = user_id;
+		this.lisItems = lisItems;
 	}
 
-	public Caddie(long id, Date date, long user_id) {
+	public Caddie(long id, Date date, long user_id, List<CaddieItem> lisItems) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.user_id = user_id;
+		this.lisItems = lisItems;
 	}
 
 	public long getId() {
@@ -48,6 +51,16 @@ public class Caddie {
 
 	public void setUser_id(long user_id) {
 		this.user_id = user_id;
+	}
+
+	public List<CaddieItem> getLisItems() {
+		return lisItems;
+		
+	}
+
+	public void setLisItems(List<CaddieItem> lisItems) {
+		this.lisItems = lisItems;
+		
 	}
 
 	@Override
