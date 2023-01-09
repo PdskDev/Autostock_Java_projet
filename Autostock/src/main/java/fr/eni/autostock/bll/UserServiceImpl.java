@@ -1,6 +1,7 @@
 package fr.eni.autostock.bll;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import fr.eni.autostock.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	private UserRepository userRepository;
 	private CaddieRepository caddieRepository;
 	private GenderRepository genderRepository;
@@ -35,44 +36,54 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userRepository.save(user);
 	}
 
 	@Override
-	public void deleteUser(long idUser) {
-		// TODO Auto-generated method stub
-		
+	public boolean deleteUser(long idUser) {
+		User userToDelte = getUser(idUser);
+
+		if (userToDelte != null) {
+			userRepository.delete(userToDelte);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public User getUser(long idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<User> userCheck = userRepository.findById(idUser);
+
+		if (userCheck.isEmpty())
+			return null;
+
+		return userCheck.get();
 	}
 
 	@Override
 	public User getUserByCredential(String email, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		User userByEmailAndPassword = userRepository.findByLoginAndPassword(email, password);
+
+		if (userByEmailAndPassword == null) {
+			return null;
+		}
+
+		return userByEmailAndPassword;
 	}
 
 	@Override
 	public List<Caddie> listUserCaddies(long idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		return caddieRepository.findByUser(idUser);
 	}
 
 	@Override
 	public List<Gender> listGenders() {
-		// TODO Auto-generated method stub
-		return null;
+		return genderRepository.findAll();
 	}
 
 	@Override
 	public List<City> listCities() {
-		// TODO Auto-generated method stub
-		return null;
+		return cityRepository.findAll();
 	}
 
 }

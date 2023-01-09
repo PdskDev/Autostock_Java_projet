@@ -1,6 +1,7 @@
 package fr.eni.autostock.bll;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,44 +36,48 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public void saveCar(Car car) {
-		// TODO Auto-generated method stub
-		
+		carRepository.save(car);
 	}
 
 	@Override
 	public Car getCar(long idCar) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Car> carCheck = carRepository.findById(idCar);
+
+		if (carCheck.isEmpty())
+			return null;
+		return carCheck.get();
 	}
 
 	@Override
-	public void deleteCar(long idCar) {
-		// TODO Auto-generated method stub
+	public boolean deleteCar(long idCar) {
 		
+		Car carToDelte = getCar(idCar);
+
+		if (carToDelte != null) {
+			carRepository.delete(carToDelte);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public List<Car> ListCars() {
-		// TODO Auto-generated method stub
-		return null;
+		return carRepository.findAll();
 	}
 
 	@Override
 	public List<Brand> listBrands() {
-		// TODO Auto-generated method stub
-		return null;
+		return brandRepository.findAll();
 	}
 
 	@Override
 	public List<Energy> listEnergies() {
-		// TODO Auto-generated method stub
-		return null;
+		return energyRepository.findAll();
 	}
 
 	@Override
 	public List<Option> listOptions() {
-		// TODO Auto-generated method stub
-		return null;
+		return optionRepository.findAll();
 	}
 
 }

@@ -19,7 +19,7 @@ public class Caddie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private Date date;
-	private long user_id;
+	private long user;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private List<CaddieItem> lisItems;
@@ -31,7 +31,7 @@ public class Caddie {
 	public Caddie(Date date, long user_id, List<CaddieItem> lisItems) {
 		super();
 		this.date = date;
-		this.user_id = user_id;
+		this.user = user_id;
 		this.lisItems = lisItems;
 	}
 
@@ -39,7 +39,7 @@ public class Caddie {
 		super();
 		this.id = id;
 		this.date = date;
-		this.user_id = user_id;
+		this.user = user_id;
 		this.lisItems = lisItems;
 	}
 
@@ -59,12 +59,12 @@ public class Caddie {
 		this.date = date;
 	}
 
-	public long getUser_id() {
-		return user_id;
+	public long getUser() {
+		return user;
 	}
 
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setUser(long user_id) {
+		this.user = user_id;
 	}
 
 	public List<CaddieItem> getLisItems() {
@@ -85,7 +85,7 @@ public class Caddie {
 		builder.append(", date=");
 		builder.append(date);
 		builder.append(", user_id=");
-		builder.append(user_id);
+		builder.append(user);
 		builder.append("]");
 		return builder.toString();
 	}

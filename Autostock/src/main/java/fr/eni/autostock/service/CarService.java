@@ -11,7 +11,7 @@ public interface CarService {
 	
 	void saveCar(Car car);
 	Car getCar(long idCar);
-	void deleteCar(long idCar);
+	boolean deleteCar(long idCar);
 	
 	
 	List<Car> ListCars();

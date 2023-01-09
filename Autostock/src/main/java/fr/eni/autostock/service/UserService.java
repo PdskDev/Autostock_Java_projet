@@ -10,7 +10,7 @@ import fr.eni.autostock.bo.User;
 public interface UserService {
 	
 	void saveUser(User user);
-	void deleteUser(long idUser);
+	boolean deleteUser(long idUser);
 	User getUser(long idUser);
 	User getUserByCredential(String email, String password);
 	
