@@ -2,19 +2,62 @@ package fr.eni.autostock.bo;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "users")
 public class User {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotBlank(message = "Merci d'indiquer la civilité")
+	@NotNull
 	private String gender;
+	
+	@NotBlank(message = "Merci de saisir le nom de famille")
+	@NotNull
 	private String lastName;
+	
+	@NotBlank(message = "Merci de saisir le prénom")
+	@NotNull
 	private String firstName;
+	
+	@NotBlank(message = "Merci de préciser l'adresse")
+	@NotNull
 	private String adresse;
+	
+	@NotBlank(message = "Le code postale n'a pas été renseigné")
+	@NotNull
 	private String codePostal;
+	
+	@NotBlank(message = "Le nom de la ville n'a pas été saisi")
+	@NotNull
 	private String city;
+	
+	@NotBlank(message = "Le numéro de téléphone est obligatoire")
+	@NotNull
 	private String phone;
+	
+	@NotBlank(message = "L'adresse email est obligatoire")
+	@NotNull
 	private String email;
+	
+	@NotBlank(message = "Indiquez votre nom d'utisateur")
+	@NotNull
 	private String login;
+	
+	@NotBlank(message = "Vous devez saisir un mot de passe")
+	@NotNull
 	private String password;
+	
 	private List<Caddie> listCaddies;
 	
 	

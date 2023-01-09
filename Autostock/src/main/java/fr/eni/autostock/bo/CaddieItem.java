@@ -1,10 +1,25 @@
 package fr.eni.autostock.bo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "caddie_items")
 public class CaddieItem {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotNull
 	private long caddie_id;
 	private long car_id;
+	
+	@NotNull
 	private int qty;
 
 	

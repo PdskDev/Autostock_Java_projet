@@ -2,12 +2,34 @@ package fr.eni.autostock.bo;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "cars")
 public class Car {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotBlank(message = "Merci de sélectionner une marque")
+	@NotNull
 	private String brand;
+	
+	@NotBlank(message = "Merci d'indiquer le modèle")
+	@NotNull
 	private String model;
+	
+	@NotBlank(message = "Merci d'indiquer le type de carburant")
+	@NotNull
 	private String energy;
+	
 	private List<Option> options;
 	
 	public Car() {
