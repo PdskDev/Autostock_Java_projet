@@ -1,83 +1,72 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title>AutoStock - Nos Véhicules</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-	crossorigin="anonymous">
-</head>
-<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div
+				class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 m-3 border-top border-bottom">
+				<h1>Ajouter un véhicule</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
 
-	<div class="container m-3">
-
-		<h1 class="mb-4">Ajouer un véhicule</h1>
-
-		<div class="row">
-			<div class="col">
-
-				<form th:action="@{/vehicules/add}" method="post"
-					class="form-inline" role="form" th:object="${car}">
-					<div class="form-group mb-3">
-						<label class="sr-only" for="name">Marque: </label> <select
-							multiple class="form-control" id="brand" name="brand">
-							<option th:each="brand : ${listeMarques}"
-								th:value="${brand.name}" th:text="${brand.name}"></option>
-						</select>
-					</div>
-					<div class="form-group mb-3">
-						<label class="sr-only" for="name">Modèle: </label> <input
-							type="text" class="form-control" id="model" name="model"
-							placeholder="Enter Player Country">
-					</div>
-					<div class="form-group mb-3">
-						<label class="sr-only" for="name">Energie: </label> <select
-							 multiple class="form-control"
-							id="energy" name="energy">
-							<option th:each="energie : ${listeEnergies}"
-								th:value="${energie.label}" th:text="${energie.label}"></option>
-						</select>
-					</div>
-					<div class="form-group mb-3">
-						<label class="sr-only" for="name">Option*: </label>
-						<!-- <select
+			<form th:action="@{/vehicules/add}" method="post" class="form-inline"
+				role="form" th:object="${car}">
+				<div class="form-group mb-3">
+					<label class="sr-only" for="name">Marque: </label> <select multiple
+						class="form-control" id="brand" name="brand">
+						<option th:each="brand : ${listeMarques}" th:value="${brand.name}"
+							th:text="${brand.name}"></option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<label class="sr-only" for="name">Modèle: </label> <input
+						type="text" class="form-control" id="model" name="model"
+						placeholder="Enter Player Country">
+				</div>
+				<div class="form-group mb-3">
+					<label class="sr-only" for="name">Energie: </label> <select
+						multiple class="form-control" id="energy" name="energy">
+						<option th:each="energie : ${listeEnergies}"
+							th:value="${energie.label}" th:text="${energie.label}"></option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<label class="sr-only" for="name">Option*: </label>
+					<!-- <select
 							th:field="*{listeOptions}" multiple>
 							<option th:each="option : ${listeOptions}"
 								th:value="${option.label}" th:text="${option.label}"></option>
 						</select>-->
 
-						<div class="form-check form-check-inline"
-							th:each="option : ${listeOptions}">
-							<input class="form-check-input" type="checkbox"
-								th:value="${option.label}" 
-								th:text='${option.label}' id="option" name="option"> <label
-								class="form-check-label" for="inlineCheckbox1"></label>
-						</div>
+					<div class="form-check form-check-inline"
+						th:each="option : ${listeOptions}">
+						<input class="form-check-input" type="checkbox"
+							th:value="${option.label}" th:text='${option.label}' id="option"
+							name="option"> <label class="form-check-label"
+							for="inlineCheckbox1"></label>
 					</div>
-					<div class="form-group mb-3">
-						<label class="sr-only" for="picture">Image (URL): </label> <input
-							type="text" class="form-control" id="picture" name="picture"
-							placeholder="">
+				</div>
+				<div class="form-group mb-3">
+					<label class="sr-only" for="picture">Image (URL): </label> <input
+						type="text" class="form-control" id="picture" name="picture"
+						placeholder="">
+				</div>
+				<div class="form-group mb-3">
+					<label class="sr-only" for="price">Prix: </label>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder=""
+							aria-label="" aria-describedby="basic-addon2" name="price"><span
+							class="input-group-text" id="price">€</span>
 					</div>
-					<div class="form-group mb-3">
-						<label class="sr-only" for="price">Prix: </label>
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder=""
-								aria-label="" aria-describedby="basic-addon2" name="price"><span
-								class="input-group-text" id="price">€</span>
-						</div>
-					</div>
+				</div>
 
 
-					<button type="submit" class="btn btn-primary">Valider</button>
-				</form>
-			</div>
+				<button type="submit" class="btn btn-primary">Valider</button>
+			</form>
 		</div>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-			crossorigin="anonymous"></script>
-</body>
-</html>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	</html>
