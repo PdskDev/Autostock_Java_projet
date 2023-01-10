@@ -2,6 +2,7 @@ package fr.eni.autostock.bo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,30 +32,38 @@ public class Car {
 	@NotNull
 	private String energy;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Option> options;
+	
+	private double price;
+	
+	private String picture;
 	
 	public Car() {
 		super();
 	}
 	
 	
-	public Car(String brand, String model, String energy, List<Option> options) {
+	public Car(String brand, String model, String energy, List<Option> options, double price, String picture) {
 		super();
 		this.brand = brand;
 		this.model = model;
 		this.energy = energy;
 		this.options = options;
+		this.price = price;
+		this.picture = picture;
 	}
 	
 	
-	public Car(long id, String brand, String model, String energy, List<Option> options) {
+	public Car(long id, String brand, String model, String energy, List<Option> options, double price, String picture) {
 		super();
 		this.id = id;
 		this.brand = brand;
 		this.model = model;
 		this.energy = energy;
 		this.options = options;
+		this.price = price;
+		this.picture = picture;
 	}
 
 
@@ -108,6 +117,25 @@ public class Car {
 	}
 
 
+	public double getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -121,6 +149,10 @@ public class Car {
 		builder.append(energy);
 		builder.append(", options=");
 		builder.append(options);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", picture=");
+		builder.append(picture);
 		builder.append("]");
 		return builder.toString();
 	}

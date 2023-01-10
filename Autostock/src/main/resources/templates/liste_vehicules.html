@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>AutoStock - Nos Véhicules</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+	
+	<h1>Nos véhicules</h1>
+
+		<div class="row">
+			<div class="col">
+
+
+				<!--  <div th:if="${listeVehicules != null}"
+					th:each="vehicule : ${listeVehicules}" class="col-sm-4">
+					<div class="card mb-3">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${vehicule.brand}"></h5>
+							<img th:src="@{${vehicule.picture}}"
+								class="img-fluid rounded-start">
+							<p class="card-text" th:text="${vehicule.model}"></p>
+							<p class="card-text" th:text="${vehicule.model}">Nb options</p>
+							<p class="card-text" th:text="${vehicule.price}"></p>
+							<a href="#" class="btn btn-primary">Ajouter</a>
+						</div>
+					</div>
+				</div>-->
+				<div th:if="${not #lists.isEmpty(listeVehicules)}"
+					th:each="vehicule : ${listeVehicules}" class="col-sm-4">
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img th:src="@{${vehicule.picture}}"
+									class="img-fluid" th:alt="${vehicule.brand +' ' + vehicule.model}">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title" th:text="${vehicule.brand}"></h5>
+									<p class="card-text" th:text="${vehicule.model}"></p>
+									<p class="card-text" th:text="${vehicule.model}">Nb options</p>
+									<!--  <p class="card-text" th:text="${vehicule.price}">€</p>-->
+									<p class="card-text" th:text="${#strings.replace(#numbers.formatCurrency(vehicule.price), '.00', '&#8364;')}"></p>
+									<p class="card-text">
+										<a href="#" class="btn btn-primary">Ajouter</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+</body>
+</html>

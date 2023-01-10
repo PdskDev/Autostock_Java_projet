@@ -20,19 +20,25 @@ public class City {
 	@NotNull
 	private String name;
 	
+	@NotBlank
+	@NotNull
+	private String codePostal;
+	
 	public City() {
 		super();
 	}
 	
-	public City(String name) {
+	public City(String name, String codePostal) {
 		super();
 		this.name = name;
+		this.codePostal = codePostal;
 	}
 	
-	public City(long id, String name) {
+	public City(long id, String name, String codePostal) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.codePostal= codePostal;
 	}
 
 	public long getId() {
@@ -50,6 +56,15 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
 
 	@Override
 	public String toString() {
@@ -58,6 +73,8 @@ public class City {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", codePostal=");
+		builder.append(codePostal);
 		builder.append("]");
 		return builder.toString();
 	}

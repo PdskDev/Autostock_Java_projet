@@ -59,7 +59,7 @@ public class User {
 	@NotNull
 	private String password;
 	
-	@OneToMany
+	@OneToMany(orphanRemoval = true)
 	private List<Caddie> listCaddies;
 	
 	
