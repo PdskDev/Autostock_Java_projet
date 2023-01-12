@@ -1,6 +1,7 @@
 package fr.eni.autostock.bll;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,19 +61,21 @@ public class PanierServiceImpl implements PanierService {
 
 	@Override
 	public void retirerDuPanier(long id) {
-		/*
-		 * for (Car car : listeCarPanier) { if (car.getId() == id) {
-		 * 
-		 * listeCarPanier.remove(car); System.out.println(car); } }
-		 */
 		
-		Car carDemande = carService.getCar(id);
-		 
-		boolean isRemoved = listeCarPanier.remove(carDemande);
+		Car carToDelete = carService.getCar(id);
 		
-		System.out.println(isRemoved);
+		Iterator<Car> carIterator =listeCarPanier.iterator();
 		
-		
+		while (carIterator.hasNext()){
+			
+		   Car car_itr=carIterator.next();
+		   
+		   if (car_itr.getId() == carToDelete.getId()){
+			   
+			   carIterator.remove();
+		      return;
+		    }
+		}
 	}
 
 }
