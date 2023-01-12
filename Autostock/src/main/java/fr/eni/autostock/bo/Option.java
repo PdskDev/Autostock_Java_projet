@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "options")
 public class Option {
@@ -23,8 +26,9 @@ public class Option {
 	@NotNull
 	private String label;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "car_id")
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "car_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Car car;
 	
 	public Option() {

@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByCredential(String email, String password) {
-		User userByEmailAndPassword = userRepository.findByLoginAndPassword(email, password);
+		User userByEmailAndPassword = userRepository.findByEmailAndPassword(email, password);
 
 		if (userByEmailAndPassword == null) {
 			return null;

@@ -3,18 +3,25 @@
 	<div class="row">
 		<div class="col">
 			<div
-				class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 m-3 border-top border-bottom">
-				<h1>Ajouter un véhicule</h1>
+				class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mt-3 mb-3 border-top border-bottom">
+				<h1>Accueil</h1>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
+		<div class="row" th:if="${msgInscriptionOK != null}">
+					<div class="col-md-10 mx-auto alert alert-success" role="alert"
+						th:text="${msgInscriptionOK}"></div>
+				</div>
+		</div>
+	</div>
+		
 
 			<form th:action="@{/vehicules/add}" method="post" class="form-inline"
 				role="form" th:object="${car}">
 				<div class="form-group mb-3">
-					<label class="sr-only" for="name">Marque: </label> <select multiple
+					<label class="sr-only" for="name">Marque: </label> <select 
 						class="form-control" id="brand" name="brand">
 						<option th:each="brand : ${listeMarques}" th:value="${brand.name}"
 							th:text="${brand.name}"></option>
@@ -23,11 +30,11 @@
 				<div class="form-group mb-3">
 					<label class="sr-only" for="name">Modèle: </label> <input
 						type="text" class="form-control" id="model" name="model"
-						placeholder="Enter Player Country">
+						placeholder="">
 				</div>
 				<div class="form-group mb-3">
 					<label class="sr-only" for="name">Energie: </label> <select
-						multiple class="form-control" id="energy" name="energy">
+						 class="form-control" id="energy" name="energy">
 						<option th:each="energie : ${listeEnergies}"
 							th:value="${energie.label}" th:text="${energie.label}"></option>
 					</select>
@@ -43,9 +50,10 @@
 					<div class="form-check form-check-inline"
 						th:each="option : ${listeOptions}">
 						<input class="form-check-input" type="checkbox"
-							th:value="${option.label}" th:text='${option.label}' id="option"
-							name="option"> <label class="form-check-label"
-							for="inlineCheckbox1"></label>
+							th:value="${option.id}" th:text='${option.label}'
+							th:name="${'opt'+option.id}">
+
+
 					</div>
 				</div>
 				<div class="form-group mb-3">
@@ -56,9 +64,9 @@
 				<div class="form-group mb-3">
 					<label class="sr-only" for="price">Prix: </label>
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder=""
-							aria-label="" aria-describedby="basic-addon2" name="price"><span
-							class="input-group-text" id="price">€</span>
+						<input type="number" class="form-control" placeholder=""
+							aria-label="" aria-describedby="basic-addon2" id="price"
+							name="price"><span class="input-group-text" id="price">€</span>
 					</div>
 				</div>
 
@@ -66,6 +74,7 @@
 				<button type="submit" class="btn btn-primary">Valider</button>
 			</form>
 		</div>
+		
 	</div>
 	<div th:replace="fragments/footer :: footer"></div>
 	</body>

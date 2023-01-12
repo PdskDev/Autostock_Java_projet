@@ -80,4 +80,13 @@ public class CarServiceImpl implements CarService {
 		return optionRepository.findAll();
 	}
 
+	@Override
+	public Option getOption(long idOption) {
+		Optional<Option> option = optionRepository.findById(idOption);
+		
+		if (option.isEmpty())
+			return null;
+		return option.get();
+	}
+
 }

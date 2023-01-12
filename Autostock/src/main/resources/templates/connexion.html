@@ -1,0 +1,66 @@
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div
+				class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 m-3 border-top border-bottom">
+				<h1>Se connecter</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		
+		<div class="row d-flex justify-content-center">
+		<div class="col col-4 m-3">
+		
+		
+		<form th:action="@{/user/connexion}" method="post">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form2Example1" class="form-control" />
+    <label class="form-label" for="form2Example1">Email</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="form2Example2" class="form-control" />
+    <label class="form-label" for="form2Example2">Mot de passe</label>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+        <label class="form-check-label" for="form2Example31"> Se souvenir </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a href="#!">Mot de passe oublié?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <button type="button" class="btn btn-primary btn-block mb-4">Connexion</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Pas encore membre? <a th:href="@{/inscription}">S'inscrire</a></p>
+    
+  </div>
+</form>
+		
+		
+		
+		</div>
+		</div>
+		
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	</html>

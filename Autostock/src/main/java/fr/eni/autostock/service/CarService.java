@@ -18,5 +18,8 @@ public interface CarService {
 	
 	List<Brand> listBrands();
 	List<Energy> listEnergies();
+	
+	Option getOption(long idOption);
 	List<Option> listOptions();
+	
 }

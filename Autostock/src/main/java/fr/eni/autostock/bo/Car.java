@@ -1,12 +1,17 @@
 package fr.eni.autostock.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -32,12 +37,19 @@ public class Car {
 	@NotNull
 	private String energy;
 	
-	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Option> options;
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "cars_options",
+			joinColumns = @JoinColumn(name = "car_id"),
+			inverseJoinColumns = @JoinColumn(name="option_id")
+			)
+	private List<Option> options = new ArrayList<>();
 	
 	private double price;
 	
 	private String picture;
+	
+	private int option;
 	
 	public Car() {
 		super();
@@ -78,7 +90,7 @@ public class Car {
 
 
 	public String getBrand() {
-		return brand;
+		return brand.toUpperCase();
 	}
 
 
@@ -88,7 +100,7 @@ public class Car {
 
 
 	public String getModel() {
-		return model;
+		return model.toUpperCase();
 	}
 
 
@@ -98,7 +110,7 @@ public class Car {
 
 
 	public String getEnergy() {
-		return energy;
+		return energy.toUpperCase();
 	}
 
 
@@ -134,6 +146,14 @@ public class Car {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+	
+	public int getOption() {
+		return option;
+	}
+
+	public void setOption(int option) {
+		this.option = option;
+	}
 
 
 	@Override
@@ -156,5 +176,5 @@ public class Car {
 		builder.append("]");
 		return builder.toString();
 	}
-
+	
 }

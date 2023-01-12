@@ -1,0 +1,77 @@
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div
+				class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 m-3 border-top border-bottom">
+				<h1>Panier</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row" th:if="${not #lists.isEmpty(listeVehiculesPanier)}">
+		<div class=row>
+			<div class="col col-2">
+				<a class="btn btn-success" th:href="@{/vehicules}"><i
+					class="bi bi-car-front-fill"></i> Voir le catalogue</a>
+			</div>
+			<div class="col col-2">
+				<form th:action="@{/vehicules/panier/vider}" method="post">
+					<button type="submit" class="btn btn-danger">
+						<i class="bi bi-cart-x-fill"></i> Vider le panier
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" th:if="${#lists.isEmpty(listeVehiculesPanier)}">
+		<div class="col">
+			<div class="row">
+				<div class="col-md-10 mx-auto alert alert-success" role="alert">Votre
+					panier est vide !</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row row-cols-1">
+		<div class="col-6" th:if="${not #lists.isEmpty(listeVehiculesPanier)}"
+			th:each="vehicule : ${listeVehiculesPanier}">
+			<div class="col">
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img th:src="@{${vehicule.picture}}" class="img-fluid"
+								th:alt="${vehicule.brand +' ' + vehicule.model}">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${vehicule.brand}"></h5>
+								<p class="card-text"
+									th:text="${vehicule.model + ' ' + vehicule.energy}"></p>
+								<p class="card-text" th:text="${vehicule.option + ' option(s)'}"></p>
+								<!--  <p class="card-text" th:text="${vehicule.price}">€</p>-->
+								<p class="card-text"
+									th:text="${#strings.replace(#numbers.formatCurrency(vehicule.price), '.00', '&#8364;')}"></p>
+								<p class="card-text">
+								<form th:action="@{/vehicules/panier/retirer}" method="post">
+									<input type="hidden" name="car_id" th:value="${vehicule.id}">
+									<button type="submit" class="btn btn-danger">
+										<i class="bi bi-trash3-fill"> Retirer</i>
+									</button>
+								</form>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

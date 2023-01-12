@@ -14,8 +14,10 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col text-center text-lg text-uppercase fs-1 mb-2">
-				<span>Autostock</span>
+			<div class="col text-center text-lg fs-1 fw-4 mb-2">
+				<img src="https://images.pngnice.com/download/2007/Car-PNG-HD.png" width="6%" class="img-fluid">
+				<span>AutoStock</span>
+				<img src="https://www.pngplay.com/wp-content/uploads/8/White-Volkswagen-Car-PNG-Free-File-Download.png" width="7%" class="img-fluid">
 			</div>
 		</div>
 		<div class="row">
@@ -40,10 +42,17 @@
 									th:href="@{/vehicules/add}">Ajouter un véhicule</a></li>
 							</ul>
 							<ul class="navbar-nav navbar-right">
-								<li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-basket-fill"></i></a></li>
-								<li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-fill-add"></i>
+								<li class="nav-item" th:if="${nbCarInPanier > 0}"><a
+									class="nav-link" href="/vehicules/panier"><i
+										class="bi bi-bag-heart"> <span
+											th:if="${nbCarInPanier > 0}"
+											class="badge rounded-pill text-bg-success"
+											th:text="${nbCarInPanier}"></span></i></a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/inscription"><i class="bi bi-person-fill-add"></i>
 										S'inscrire</a></li>
-								<li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-arrow-in-right"></i><span
+								<li class="nav-item"><a class="nav-link"
+									href="/user/connexion"><i class="bi bi-box-arrow-in-right"></i><span
 										class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 							</ul>
 						</div>

@@ -2,6 +2,7 @@ package fr.eni.autostock.bo;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +26,12 @@ public class User {
 	
 	@NotBlank(message = "Merci de saisir le nom de famille")
 	@NotNull
+	@Column(name = "last_name")
 	private String lastName;
 	
 	@NotBlank(message = "Merci de saisir le prénom")
 	@NotNull
+	@Column(name = "first_name")
 	private String firstName;
 	
 	@NotBlank(message = "Merci de préciser l'adresse")
@@ -51,10 +54,6 @@ public class User {
 	@NotNull
 	private String email;
 	
-	@NotBlank(message = "Indiquez votre nom d'utisateur")
-	@NotNull
-	private String login;
-	
 	@NotBlank(message = "Vous devez saisir un mot de passe")
 	@NotNull
 	private String password;
@@ -66,10 +65,9 @@ public class User {
 	public User() {
 		super();
 	}
-
-
+	
 	public User(String gender, String lastName, String firstName, String adresse, String codePostal, String city,
-			String phone, String email, String login, String password, List<Caddie> listCaddies) {
+			String phone, String email, String password) {
 		super();
 		this.gender = gender;
 		this.lastName = lastName;
@@ -79,14 +77,28 @@ public class User {
 		this.city = city;
 		this.phone = phone;
 		this.email = email;
-		this.login = login;
+		this.password = password;
+	}
+
+
+	public User(String gender, String lastName, String firstName, String adresse, String codePostal, String city,
+			String phone, String email, String password, List<Caddie> listCaddies) {
+		super();
+		this.gender = gender;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.adresse = adresse;
+		this.codePostal = codePostal;
+		this.city = city;
+		this.phone = phone;
+		this.email = email;
 		this.password = password;
 		this.listCaddies = listCaddies;
 	}
 
 
 	public User(long id, String gender, String lastName, String firstName, String adresse, String codePostal,
-			String city, String phone, String email, String login, String password, List<Caddie> listCaddies) {
+			String city, String phone, String email, String password, List<Caddie> listCaddies) {
 		super();
 		this.id = id;
 		this.gender = gender;
@@ -97,7 +109,6 @@ public class User {
 		this.city = city;
 		this.phone = phone;
 		this.email = email;
-		this.login = login;
 		this.password = password;
 		this.listCaddies = listCaddies;
 	}
@@ -193,16 +204,6 @@ public class User {
 	}
 
 
-	public String getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-
 	public String getPassword() {
 		return password;
 	}
@@ -244,8 +245,6 @@ public class User {
 		builder.append(phone);
 		builder.append(", email=");
 		builder.append(email);
-		builder.append(", login=");
-		builder.append(login);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", listCaddies=");
