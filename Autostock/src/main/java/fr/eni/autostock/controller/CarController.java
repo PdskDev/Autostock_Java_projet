@@ -53,7 +53,7 @@ public class CarController {
 			return "ajouter_vehicule";
 		}
 		
-		return "redirect:/user/connexion";
+		return "redirect:/connexion";
 	}
 
 	@PostMapping("/add")

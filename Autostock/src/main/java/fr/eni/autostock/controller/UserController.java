@@ -1,8 +1,6 @@
 package fr.eni.autostock.controller;
 
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,12 +32,6 @@ public class UserController {
 		return "inscription";
 	}
 
-	@GetMapping("/connexion")
-	public String loginForm() {
-
-		// return "redirect:/login";
-		return "connexion";
-	}
 
 	@PostMapping("/inscription")
 	public String signup(Model model, RedirectAttributes redirectAttrs,
@@ -80,31 +72,6 @@ public class UserController {
 		return "inscription";
 	}
 
-	@PostMapping("/login")
-	public String seConnecter(Model model, HttpSession session, @RequestParam(required = true) String email,
-			@RequestParam(required = true) String password) {
-
-		User userCheck = userService.getUserByCredential(email, password);
-
-		if (userCheck != null) {
-			session.setAttribute("userConnected", userCheck.getFirstName());
-			
-			System.out.println(userCheck.getFirstName());
-
-			return "redirect:/";
-		}
-		
-		model.addAttribute("msgLoginMotdePasseKO", "Adresse Email ou mot de passe erroné(e)!");
-		return "connexion";
-		
-	}
 	
-	@GetMapping("/logout")
-	public String seDeconnecter(Model model, HttpSession session) {
-		
-		session.invalidate();
-
-		return "redirect:/";
-	}
 
 }
