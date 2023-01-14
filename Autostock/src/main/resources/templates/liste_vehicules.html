@@ -29,7 +29,7 @@
 								<p class="card-text"
 									th:text="${#strings.replace(#numbers.formatCurrency(vehicule.price), '.00', '&#8364;')}"></p>
 								<p class="card-text">
-								<form th:action="@{/vehicules/panier}" method="post">
+								<form th:action="@{/panier}" method="post">
 								<input type="hidden" name="marque" th:value="${vehicule.brand}">
 								<input type="hidden" name="ref_id" th:value="${vehicule.id}">
 								<button type="submit" class="btn btn-primary"><i class="bi bi-bag-plus-fill"></i> Ajouter</button>

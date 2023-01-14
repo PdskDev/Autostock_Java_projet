@@ -15,7 +15,7 @@
 					class="bi bi-car-front-fill"></i> Voir le catalogue</a>
 			</div>
 			<div class="col col-2">
-				<form th:action="@{/vehicules/panier/vider}" method="post">
+				<form th:action="@{/panier/vider}" method="post">
 					<button type="submit" class="btn btn-danger">
 						<i class="bi bi-cart-x-fill"></i> Vider le panier
 					</button>
@@ -53,7 +53,7 @@
 								<p class="card-text"
 									th:text="${#strings.replace(#numbers.formatCurrency(vehicule.price), '.00', '&#8364;')}"></p>
 								<p class="card-text">
-								<form th:action="@{/vehicules/panier/retirer}" method="post">
+								<form th:action="@{/panier/retirer}" method="post">
 									<input type="hidden" name="car_id" th:value="${vehicule.id}">
 									<button type="submit" class="btn btn-danger">
 										<i class="bi bi-trash3-fill"></i>
