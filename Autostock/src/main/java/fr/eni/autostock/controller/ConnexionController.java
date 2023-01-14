@@ -38,8 +38,6 @@ public class ConnexionController {
 
 		if (userCheck != null) {
 			session.setAttribute("userConnected", userCheck.getFirstName());
-			
-			System.out.println(userCheck.getFirstName());
 
 			return "redirect:/";
 		}
