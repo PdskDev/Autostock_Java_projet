@@ -87,12 +87,14 @@ public class UserController {
 		User userCheck = userService.getUserByCredential(email, password);
 
 		if (userCheck != null) {
-			session.setAttribute("userConnected", userCheck);
+			session.setAttribute("userConnected", userCheck.getFirstName());
+			
+			System.out.println(userCheck.getFirstName());
 
 			return "redirect:/";
 		}
 		
-		model.addAttribute("msgLoginMotdePasseKO", "Login ou mot de passe non reconnu!");
+		model.addAttribute("msgLoginMotdePasseKO", "Adresse Email ou mot de passe erroné(e)!");
 		return "connexion";
 		
 	}

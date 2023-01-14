@@ -11,18 +11,22 @@
 	<div class="row">
 		<div class="col">
 
-			<!-- Debut inscription -->
-			<div class="container py-2">
-				<div class="row" th:if="${msgLoginMotdePasseKO != null}">
-					<div class="col-md-6 mx-auto alert alert-warning d-flex justify-content-center" role="alert"
-						th:text="${msgLoginMotdePasseKO}"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 mx-auto">
-						
-						
-						
-						<!-- Debut formulaire de connexion -->
+			<div class="container py-5">
+
+				<div class="row d-flex justify-content-center">
+					<div class="row" th:if="${msgLoginMotdePasseKO != null}">
+						<div class="col">
+							<div class="row">
+								<div
+									class="col-md-10 mx-auto alert alert-danger d-flex justify-content-center"
+									role="alert" th:text="${msgLoginMotdePasseKO}"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col col-4 m-3">
+
+
 						<form th:action="@{/user/login}" method="post">
 							<!-- Email input -->
 							<div class="form-outline mb-4">
@@ -66,15 +70,16 @@
 
 							</div>
 						</form>
-						<!-- Fin formulaire de connexion -->
+
 					</div>
 				</div>
 			</div>
-
-			<!-- Fin inscription -->
 		</div>
 	</div>
-</div>
-<div th:replace="fragments/footer :: footer"></div>
-</body>
-</html>
+	<div class="row">
+		<div class="col">
+			<div th:replace="fragments/footer :: footer"></div>
+		</div>
+	</div>
+	</body>
+	</html>

@@ -10,16 +10,16 @@
 	</div>
 
 	<div class="row row-cols-2">
-		<div class="col-6" th:if="${not #lists.isEmpty(listeVehicules)}"
+		<div class="col-4" th:if="${not #lists.isEmpty(listeVehicules)}"
 			th:each="vehicule : ${listeVehicules}">
 			<div class="col">
 				<div class="card mb-3">
 					<div class="row g-0">
-						<div class="col-md-4">
+						<div class="col-md-8">
 							<img th:src="@{${vehicule.picture}}" class="img-fluid"
 								th:alt="${vehicule.brand +' ' + vehicule.model}">
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-4">
 							<div class="card-body">
 								<h5 class="card-title" th:text="${vehicule.brand}"></h5>
 								<p class="card-text"
@@ -32,7 +32,7 @@
 								<form th:action="@{/vehicules/panier}" method="post">
 								<input type="hidden" name="marque" th:value="${vehicule.brand}">
 								<input type="hidden" name="ref_id" th:value="${vehicule.id}">
-								<button type="submit" class="btn btn-primary">Ajouter</button>
+								<button type="submit" class="btn btn-primary"><i class="bi bi-bag-plus-fill"></i> Ajouter</button>
 								</form>
 									
 								</p>

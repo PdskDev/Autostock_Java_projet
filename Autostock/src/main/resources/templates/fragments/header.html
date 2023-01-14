@@ -59,7 +59,7 @@
 								<li class="nav-item" th:if="${session.userConnected!=null}"><a
 									class="nav-link" href="/user/logout"><i
 										class="bi bi-box-arrow-in-right"></i><span
-										class="glyphicon glyphicon-log-in"></span> Se déconnecter</a> <span></span></li>
+										class="glyphicon glyphicon-log-in"></span> Se déconnecter (<span class="fw-bold" th:text="${session.userConnected}"></span>)</a> </li>
 							</ul>
 						</div>
 					</div>
