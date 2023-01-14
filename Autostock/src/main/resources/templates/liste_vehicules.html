@@ -15,15 +15,15 @@
 			<div class="col">
 				<div class="card mb-3">
 					<div class="row g-0">
-						<div class="col-md-8">
+						<div class="col-md-7">
 							<img th:src="@{${vehicule.picture}}" class="img-fluid"
 								th:alt="${vehicule.brand +' ' + vehicule.model}">
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-5">
 							<div class="card-body">
 								<h5 class="card-title" th:text="${vehicule.brand}"></h5>
 								<p class="card-text"
-									th:text="${vehicule.model + ' ' + vehicule.energy}"></p>
+									th:text="${vehicule.model + ' - ' + vehicule.energy}"></p>
 								<p class="card-text" ></p>
 								<!--  <p class="card-text" th:text="${vehicule.price}">€</p>-->
 								<p class="card-text"

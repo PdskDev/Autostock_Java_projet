@@ -48,7 +48,7 @@
 								<h5 class="card-title" th:text="${vehicule.brand}"></h5>
 								<p class="card-text"
 									th:text="${vehicule.model + ' ' + vehicule.energy}"></p>
-								<p class="card-text" th:text="${vehicule.option + ' option(s)'}"></p>
+								<p class="card-text" th:text="${vehicule.optionOpt + ' option(s)'}"></p>
 								<!--  <p class="card-text" th:text="${vehicule.price}">€</p>-->
 								<p class="card-text"
 									th:text="${#strings.replace(#numbers.formatCurrency(vehicule.price), '.00', '&#8364;')}"></p>

@@ -49,7 +49,7 @@ public class Car {
 	
 	private String picture;
 	
-	private int option;
+	private int optionOpt;
 	
 	public Car() {
 		super();
@@ -74,6 +74,18 @@ public class Car {
 		this.model = model;
 		this.energy = energy;
 		this.options = options;
+		this.price = price;
+		this.picture = picture;
+	}
+	
+	
+	public Car(String brand, String model, String energy, List<Option> options, int option, double price, String picture) {
+		super();
+		this.brand = brand;
+		this.model = model;
+		this.energy = energy;
+		this.options = options;
+		this.optionOpt = option;
 		this.price = price;
 		this.picture = picture;
 	}
@@ -147,12 +159,12 @@ public class Car {
 		this.picture = picture;
 	}
 	
-	public int getOption() {
-		return option;
+	public int getOptionOpt() {
+		return optionOpt;
 	}
 
-	public void setOption(int option) {
-		this.option = option;
+	public void setOptionOpt(int option) {
+		this.optionOpt = option;
 	}
 
 

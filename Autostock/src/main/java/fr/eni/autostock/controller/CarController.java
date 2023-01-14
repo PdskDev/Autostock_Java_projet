@@ -22,7 +22,7 @@ import fr.eni.autostock.service.CarService;
 
 @Controller
 @RequestMapping("/vehicules")
-@SessionAttributes({ "listeVehiculesPanier", "nbCarInPanier" })
+@SessionAttributes({ "listeVehicules", "listeVehiculesPanier", "nbCarInPanier" })
 public class CarController {
 
 	@Autowired
@@ -71,7 +71,7 @@ public class CarController {
 
 			if (opt1 == 1 && opt1 != null) {
 				listOptionsVehicule.add(carService.getOption(opt1));
-			}
+			} 
 
 			if (opt2 == 2 && opt2 != null) {
 				listOptionsVehicule.add(carService.getOption(opt2));
@@ -90,11 +90,10 @@ public class CarController {
 			newCar.setBrand(brand);
 			newCar.setModel(model);
 			newCar.setEnergy(energy);
-			// newCar.setOptions(listOptionsVehicule);
+			//newCar.setOptions(listOptionsVehicule);
 			newCar.setPicture(picture);
 			newCar.setPrice(price);
-
-			// System.out.println(listOptionsVehicule);
+			newCar.setOptionOpt(3);
 
 			carService.saveCar(newCar);
 
